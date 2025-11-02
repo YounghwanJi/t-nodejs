@@ -12,4 +12,13 @@ $ npm install express dotenv
 # Run
 ``` bash
 $ node src/server.js
+
+# ${ENV}: local, dev, qa, stg, prd
+
+# Unix
+$ NODE_ENV=${ENV} node src/server.js
+
+# Unix, Windows 
+$ npm run start:${ENV}
+
 ```
