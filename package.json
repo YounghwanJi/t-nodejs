@@ -4,11 +4,13 @@
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
     "start:local": "cross-env NODE_ENV=local node src/server.js",
     "start:dev": "cross-env NODE_ENV=dev node src/server.js",
     "start:qa": "cross-env NODE_ENV=qa node src/server.js",
     "start:stg": "cross-env NODE_ENV=stg node src/server.js",
-    "start:prd": "cross-env NODE_ENV=prd node src/server.js"
+    "start:prd": "cross-env NODE_ENV=prd node src/server.js",
+    "stop": "npx kill-port 8082"
   },
   "repository": {
     "type": "git",

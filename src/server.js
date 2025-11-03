@@ -3,8 +3,12 @@ const env = require("./config/env");
 const express = require("express");
 const routes = require("./routes");
 
+console.log("🔧 Initializing server...");
+console.log("📝 Environment:", env.nodeEnv);
+console.log("🔌 Port:", env.port);
+
 const app = express();
-const PORT = env.port || 3000;
+const PORT = env.port || 8082;
 
 // middlewares
 app.use(express.json());
@@ -13,6 +17,20 @@ app.use(express.json());
 app.use("/", routes);
 
 // run server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`✅ Server running on http://localhost:${PORT}`);
+    console.log(`🎯 Process ID: ${process.pid}`);
+});
+
+server.on('error', (err) => {
+    console.error('❌ Server error:', err);
+    process.exit(1);
+});
+
+process.on('SIGTERM', () => {
+    console.log('📴 SIGTERM received, shutting down gracefully');
+    server.close(() => {
+        console.log('👋 Server closed');
+        process.exit(0);
+    });
 });
