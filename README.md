@@ -31,3 +31,10 @@ $ NODE_ENV=${ENV} node src/server.js
 $ npm run start:${ENV}
 
 ```
+
+# Checkpoint
+```bash
+$ tasklist | findstr node
+$ netstat -ano | findstr LISTENING | findstr :3000
+$ taskkill /PID ${PID} /F
+```
