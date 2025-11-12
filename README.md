@@ -53,9 +53,10 @@ CREATE TABLE users (
 # Installation ( Do not run these commands.)
 ``` bash
 $ npm init -y
-$ npm install express dotenv pg
+$ npm install express dotenv pg joi
 
 # pg: for postgreSQL
+# joi: DTO Validation
 ```
 
 # .env.local
@@ -85,4 +86,33 @@ $ npm run start:${ENV}
 $ tasklist | findstr node
 $ netstat -ano | findstr LISTENING | findstr :3000
 $ taskkill /PID ${PID} /F
+```
+
+# APIs
+## Users (/api/v1/users)
+- POST /
+- GET /{id}
+- GET /
+- PUT /{id}
+- DELETE /{id}
+
+# Test
+## http
+### http-client.private.env.json
+- Unversioned Files (in .gitignore)
+```json
+{
+  "dev": {
+    "authToken": "dev-token-here"
+  },
+  "qa": {
+    "authToken": "qa-token-here"
+  },
+  "stg": {
+    "authToken": "stg-token-here"
+  },
+  "prd": {
+    "authToken": "prd-token-here"
+  }
+}
 ```

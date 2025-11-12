@@ -5,6 +5,7 @@ const express = require("express");
 const db = require('./infrastructure/db/connections');
 
 const rootRoutes = require("./interfaces/routes/rootRoutes");
+const userRoutes = require("./interfaces/routes/userRoutes");
 
 console.log("🔧 Initializing server...");
 console.log("📝 Environment:", env.nodeEnv);
@@ -19,6 +20,7 @@ app.use(express.json());
 
 // routers
 app.use("/", rootRoutes);
+app.use("/api/v1/users", userRoutes);
 
 // run server
 const server = app.listen(PORT, () => {
