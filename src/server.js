@@ -1,6 +1,9 @@
 // env는 env.js에서만 load.
 const env = require("./config/env");
+
 const express = require("express");
+const db = require('./infrastructure/db/connections');
+
 const rootRoutes = require("./interfaces/routes/rootRoutes");
 
 console.log("🔧 Initializing server...");
@@ -10,7 +13,8 @@ console.log("🔌 Port:", env.port);
 const app = express();
 const PORT = env.port || 8082;
 
-// middlewares
+/* middlewares */
+// To parse JSON request body.
 app.use(express.json());
 
 // routers
